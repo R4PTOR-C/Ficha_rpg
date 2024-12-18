@@ -254,3 +254,70 @@ input[type="checkbox"].nivel:checked + label {
     background-color: #ff0000; /* Cor da bolinha ao marcar */
 }
 
+
+/*responsivo*/
+
+@media screen and (max-width: 1200px) {
+    .container {
+        max-width: 90%;
+        padding: 10px;
+    }
+    .atributos_arvore, .hab_arvore {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+    .descricao_superior {
+        flex-direction: column;
+    }
+    .descricao_superior h3 {
+        font-size: 20px;
+    }
+    .input-caixa {
+        max-width: 100%; /* Ajusta a largura para telas menores */
+    }
+}
+@media screen and (max-width: 768px) {
+    .conteudo {
+        flex-direction: column;
+        gap: 20px;
+    }
+    .atributos_arvore {
+        flex-direction: column;
+    }
+    .atributos_linha, .hab_arvore {
+        flex-direction: column;
+        gap: 20px;
+    }
+    h1 {
+        font-size: 35px;
+    }
+    h2 {
+        font-size: 20px;
+    }
+    .input-caixa {
+        min-height: 100px;
+        font-size: 14px;
+    }
+    label {
+        margin: 3px; /* Reduz o espaçamento em telas menores */
+    }
+}
+@media screen and (max-width: 480px) {
+    h1 {
+        font-size: 28px;
+        text-align: center;
+    }
+    h2 {
+        font-size: 18px;
+        text-align: center;
+    }
+    .container {
+        padding: 10px;
+    }
+    .input-caixa {
+        font-size: 12px;
+        padding: 5px;
+    }
+}
+
