@@ -158,6 +158,8 @@ Avaliando se à nescessidade de uma Criação de uma classe geral para todas as 
     position: relative; /* Necessário para usar pseudo-elementos */
     border: 1px solid #75021C; /* Linha interna */
     border-radius: 8px;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .container::before {
