@@ -1,0 +1,227 @@
+/*anotação das cores 
+
+    background: #F9F3E9
+    cor das letras: #000000
+    titulos principais e bordas: #75021C
+
+
+*/
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: serif;
+}
+
+body {
+    justify-items: center;
+    background-color: #F9F3E9;
+}
+
+header {
+    padding-top: 25px;
+    padding-bottom: 35px;
+}
+
+h1 {
+    font-size: 45px;
+}
+
+h2 {
+    color: #75021C;
+    font-size: 27px;
+    border-bottom: 2px solid #75021C;
+}
+
+
+
+/*
+
+
+Avaliando se à nescessidade de uma Criação de uma classe geral para todas as label 
+
+
+*/
+
+
+
+.conteudo{
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.conteu_item{
+    border: 1px solid #000;
+    padding: 16px 7px;
+}
+
+.conteu_item input{
+    background: none; 
+    border: none; 
+    outline: none; 
+    font-size: 16px;
+
+    transition: color 0.3s ease;
+}
+
+.atributos {
+    text-align: center;
+    padding: 20px 0px;
+    justify-items: center;
+}
+
+.atributos_arvore {
+    
+    display: flex;
+    justify-content: space-between;
+    padding-top: 30px;
+    gap: 100px;
+    
+}
+
+.subtitulo{
+    display: inline-block;
+    font-weight: normal;
+    font-style: italic;
+}
+
+.atri_arv_item{
+    display: flex;
+    justify-content: space-between;
+    gap: 17px;
+}
+
+.atri_arv_esquerda, .atri_arv_centro, .atri_arv_direita{
+    text-align: center;
+}
+
+.atributos_linha{
+    display: flex;
+    justify-content: space-around;
+    padding-top: 20px;
+    gap: 35px;
+}
+
+.atri_linha_item{
+    justify-items: center;
+}
+
+.atri_linha_item h4{
+    color: #75021C;
+}
+
+
+.habilidades{
+    text-align: center;
+    justify-content:   center;
+}
+.hab_arvore{
+    justify-content: center;
+    display: flex;
+    padding: 20px 0px;
+    gap: 50px;
+}
+
+.hab_item{
+    display: flex;
+    justify-content: space-between;
+    gap: 7px;
+}
+
+
+
+.disciplinas{
+    text-align: center;
+
+    border: 1px solid red;
+}
+
+.logo {
+    display: flex;
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center; /* Centraliza verticalmente */
+    margin-bottom: 20px; /* Espaçamento abaixo */
+}
+
+.logo img {
+    max-width: 100%;
+    height: auto; /* Mantém a proporção */
+    max-height: 200px; /* Limita a altura máxima */
+}
+
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    position: relative; /* Necessário para usar pseudo-elementos */
+    border: 1px solid #75021C; /* Linha interna */
+    border-radius: 8px;
+}
+
+.container::before {
+    content: "";
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    right: -4px;
+    bottom: -4px;
+    border: 1px solid #75021C; /* Linha externa */
+    border-radius: 8px; /* Mesmo raio para alinhar com o container */
+    z-index: -1; /* Coloca atrás do conteúdo */
+}
+
+
+
+
+
+/*------------------------------------------------------------------*/
+/*------------------------------------------------------------------*/
+/*------------personalização dos input------------------------------*/
+/*------------------------------------------------------------------*/
+/*------------------------------------------------------------------*/
+
+.conteu_item input:focus{
+    color: #75021C
+}
+
+.conteu_item input{
+    background: none; 
+    border: none; 
+    outline: none; 
+    font-size: 16px;
+
+    transition: color 0.3s ease;
+}
+
+input[type="checkbox"]{
+    appearance: none; /* Remove o estilo padrão do checkbox */
+    -webkit-appearance: none; /* Para compatibilidade com navegadores baseados no WebKit */
+    width: 13px; /* Largura do checkbox */
+    height: 13px; /* Altura do checkbox */
+    border: 1px solid black; /* Define a borda */
+    border-radius: 50%; /* Faz a borda ser redonda */
+    outline: none; /* Remove o contorno ao focar */
+    cursor: pointer; /* Muda o cursor ao passar sobre o checkbox */
+    background-color: transparent; /* Deixa o fundo invisível */
+}
+input[type="checkbox"]:checked {
+    background-color: black; /* Cor de fundo ao ser selecionado */
+    border-color: black; /* Cor da borda ao ser selecionado */
+}
+
+.input-caixa {
+    width: 100%; /* Largura ajustável */
+    max-width: 300px; /* Limita a largura máxima */
+    height: 150px; /* Altura para parecer uma caixa */
+    border: 1px solid #000; /* Borda para definição */
+    font-size: 16px; /* Texto legível */
+    background: transparent; /* Fundo invisível */
+    outline: none; /* Remove contorno ao focar */
+}
+
+.input-caixa:focus {
+    border-color: #75021C; /* Cor ao focar */
+    box-shadow: 0 0 5px #75021C(0, 123, 255, 0.5); /* Realce */
+}
