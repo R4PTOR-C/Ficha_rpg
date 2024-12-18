@@ -41,6 +41,30 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
+document.addEventListener('DOMContentLoaded', () => {
+    const downloadBtn = document.getElementById('download-pdf');
+
+    if (downloadBtn) {
+        downloadBtn.addEventListener('click', () => {
+            const element = document.body;
+
+            html2canvas(element, { scale: 2 }).then(canvas => {
+                const imgData = canvas.toDataURL('image/png');
+                const pdf = new jspdf.jsPDF('p', 'mm', 'a4');
+
+                const pageWidth = 210;
+                const imgWidth = pageWidth;
+                const imgHeight = (canvas.height * pageWidth) / canvas.width;
+
+                pdf.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight);
+                pdf.save('pagina.pdf');
+            });
+        });
+    } else {
+        console.error("Botão de download não encontrado!");
+    }
+});
+
 
 
 
