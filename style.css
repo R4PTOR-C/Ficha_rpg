@@ -181,47 +181,56 @@ Avaliando se à nescessidade de uma Criação de uma classe geral para todas as 
 /*------------personalização dos input------------------------------*/
 /*------------------------------------------------------------------*/
 /*------------------------------------------------------------------*/
-
-.conteu_item input:focus{
-    color: #75021C
+.conteu_item input:focus {
+    color: #75021C;
 }
 
-.conteu_item input{
-    background: none; 
-    border: none; 
-    outline: none; 
+.conteu_item input {
+    background: none;
+    border: none;
+    outline: none;
     font-size: 16px;
-
     transition: color 0.3s ease;
 }
 
-input[type="checkbox"]{
-    appearance: none; /* Remove o estilo padrão do checkbox */
-    -webkit-appearance: none; /* Para compatibilidade com navegadores baseados no WebKit */
-    width: 13px; /* Largura do checkbox */
-    height: 13px; /* Altura do checkbox */
-    border: 1px solid black; /* Define a borda */
-    border-radius: 50%; /* Faz a borda ser redonda */
-    outline: none; /* Remove o contorno ao focar */
-    cursor: pointer; /* Muda o cursor ao passar sobre o checkbox */
-    background-color: transparent; /* Deixa o fundo invisível */
-}
-input[type="checkbox"]:checked {
-    background-color: black; /* Cor de fundo ao ser selecionado */
-    border-color: black; /* Cor da borda ao ser selecionado */
-}
-
 .input-caixa {
-    width: 100%; /* Largura ajustável */
+    width: 100%; /* Ocupa toda a largura disponível */
     max-width: 300px; /* Limita a largura máxima */
-    height: 150px; /* Altura para parecer uma caixa */
-    border: 1px solid #000; /* Borda para definição */
-    font-size: 16px; /* Texto legível */
+    min-height: 150px; /* Altura mínima */
+    max-height: 150px;
+    padding: 8px; /* Espaçamento interno */
+    border: 1px solid #000; /* Borda */
+    font-size: 16px; /* Tamanho do texto */
+    line-height: 1.5; /* Altura da linha */
     background: transparent; /* Fundo invisível */
     outline: none; /* Remove contorno ao focar */
+    resize: none; /* Impede redimensionamento manual */
+    transition: border-color 0.3s ease;
 }
 
 .input-caixa:focus {
     border-color: #75021C; /* Cor ao focar */
-    box-shadow: 0 0 5px #75021C(0, 123, 255, 0.5); /* Realce */
+    box-shadow: 0 0 5px rgba(117, 2, 28, 0.5); /* Realce ao focar */
 }
+
+
+input[type="checkbox"].nivel {
+    display: none; /* Oculta o checkbox original */
+}
+
+input[type="checkbox"].nivel + label {
+    display: inline-block;
+    width: 13px; /* Largura da bolinha */
+    height: 13px; /* Altura */
+    border-radius: 50%; /* Torna redonda */
+    border: 1px solid #000; /* Cor padrão da borda */
+    margin: 5px; /* Espaçamento */
+    cursor: pointer; /* Cursor ao passar */
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+input[type="checkbox"].nivel:checked + label {
+    border-color: #ff0000; /* Cor da borda ao marcar */
+    background-color: #ff0000; /* Cor da bolinha ao marcar */
+}
+

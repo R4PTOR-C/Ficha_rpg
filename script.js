@@ -3,7 +3,8 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.nivel').forEach((checkbox) => {
         checkbox.addEventListener('change', (event) => {
             const current = event.target; // O checkbox atual que foi clicado
-            const allCheckboxes = Array.from(current.parentElement.querySelectorAll('.nivel')); // Todos os checkboxes no mesmo grupo
+            const parent = current.parentElement; // Elemento pai do grupo
+            const allCheckboxes = Array.from(parent.querySelectorAll('.nivel')); // Todos os checkboxes no mesmo grupo
             const index = allCheckboxes.indexOf(current); // Índice do checkbox atual no grupo
 
             if (current.checked) {
@@ -17,11 +18,24 @@ document.addEventListener('DOMContentLoaded', () => {
                     allCheckboxes[i].checked = false;
                 }
             }
+
+            // Atualiza as cores das bolinhas
+            allCheckboxes.forEach((cb, i) => {
+                const label = cb.nextElementSibling; // Seleciona o label associado
+                if (cb.checked) {
+                    const colors = ["#000000", "#400000", "#800000", "#bf0000", "#ff0000"];
+                    label.style.backgroundColor = colors[i] || "#ff0000"; // Aplica cor ao label
+                } else {
+                    label.style.backgroundColor = ""; // Reseta a cor
+                }
+            });
         });
     });
 
     console.log('Script carregado e funcional.');
 });
+
+
 
 
 
