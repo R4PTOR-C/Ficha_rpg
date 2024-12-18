@@ -175,6 +175,24 @@ Avaliando se à nescessidade de uma Criação de uma classe geral para todas as 
 
 
 
+.detalhes_aprofundados {
+    padding-top: 20px;
+}
+
+
+.descricao_superior {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.descricao_superior h3{
+    color:#75021C;
+}
+
+.principios_da_cronica, .pilares_e_conveccoes, .perdicao_do_cla{
+    text-align: center;
+}
 
 /*------------------------------------------------------------------*/
 /*------------------------------------------------------------------*/
