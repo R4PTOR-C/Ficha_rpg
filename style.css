@@ -357,6 +357,8 @@ input[type="checkbox"].quadrado + label {
 
 .qualificacao{
     display: flex;
+=======
+display: flex;
 }
 
 .vantagens_defeitos{
@@ -394,6 +396,7 @@ input[type="checkbox"].quadrado + label {
     width: 100%;
     height: 300px;
 }
+
 
 
 /*------------------------------------------------------------*/
@@ -436,6 +439,165 @@ input[type="checkbox"].quadrado + label {
 
 .experiencia{
     padding: 15px 0;
+.esquerda {
+    margin: 0 auto; /* Centraliza horizontalmente */
+    max-width: 100%; /* Garante que não ultrapasse a largura da tela */
+    padding: 10px; /* Espaçamento interno */
+    box-sizing: border-box; /* Inclui padding e borda no cálculo da largura */
+    display: flex; /* Define layout flexível */
+    flex-wrap: wrap; /* Permite que os itens quebrem linha, se necessário */
+    gap: 10px; /* Espaçamento entre os itens */
+    justify-content: flex-start; /* Alinha os itens à esquerda */
+}
+
+
+/* Responsividade */
+@media screen and (max-width: 1200px) {
+    .container {
+        max-width: 95%; /* Mais flexível para telas intermediárias */
+        padding: 15px;
+    }
+    .atributos_arvore, .hab_arvore {
+        flex-direction: column;
+        align-items: center;
+        gap: 25px;
+    }
+    .descricao_superior {
+        flex-direction: column;
+        gap: 15px;
+    }
+    .descricao_superior h3 {
+        font-size: 22px;
+        text-align: center;
+    }
+    .input-caixa {
+        max-width: 100%; /* Ajusta a largura para telas menores */
+        font-size: 14px; /* Texto menor */
+    }
+    .conteudo {
+        gap: 15px;
+    }
+    .linhas_dis {
+        flex-direction: column; /* Empilha os itens verticalmente */
+        gap: 15px; /* Espaçamento entre os itens */
+        align-items: flex-start; /* Alinha os itens à esquerda */
+    }
+    .linhas_dis_item {
+        width: 100%; /* Ocupa toda a largura disponível */
+    }
+    label {
+        margin-bottom: 5px; /* Espaçamento entre o label e os inputs */
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .conteudo {
+        flex-direction: column;
+        gap: 20px;
+    }
+    .atributos_arvore, .atributos_linha, .hab_arvore {
+        flex-direction: column;
+        gap: 20px;
+    }
+    h1 {
+        font-size: 32px;
+        text-align: center;
+    }
+    h2 {
+        font-size: 20px;
+        text-align: center;
+    }
+    .descricao_superior h3 {
+        font-size: 18px;
+    }
+    label {
+        margin: 5px 0; /* Margem vertical ajustada */
+    }
+    .qualificacao {
+        justify-content: center;
+    }
+    .vantagens_defeitos {
+        max-width: 100%; /* Ocupa toda a tela */
+    }
+    .item {
+        max-width: 90%; /* Ajusta largura */
+    }
+    .linhas_dis {
+        flex-direction: column; /* Empilha os itens verticalmente */
+        gap: 15px; /* Espaçamento entre os itens */
+        align-items: flex-start; /* Alinha os itens à esquerda */
+    }
+    .linhas_dis_item {
+        width: 100%; /* Ocupa toda a largura disponível */
+    }
+    label {
+        margin-bottom: 5px; /* Espaçamento entre o label e os inputs */
+    }
+    .descricao_dis {
+        justify-content: flex-start; /* Alinha ao início no mobile */
+    }
+    .input-caixa {
+        flex: 1 1 100%; /* Cada caixa ocupa 100% da largura */
+        max-width: 100%; /* Garante que não ultrapasse a tela */
+    }
+    .detalhes_aprofundados{
+        padding: 10px;
+
+    }
+    .esquerda {
+        flex-wrap: wrap; /* Garante que os itens quebrem linha */
+    }
+    .esquerda .item {
+        flex: 1 1 100%; /* Cada item ocupa 100% da largura */
+        max-width: 100%; /* Garante que não ultrapasse a tela */
+    }
+
+    .descricao_superior {
+        flex-direction: column; /* Empilha os itens verticalmente */
+        gap: 15px; /* Reduz o espaçamento entre os itens */
+    }
+    .descricao_superior div {
+        flex: 1 1 100%; /* Cada item ocupa 100% da largura */
+        max-width: 100%; /* Garante que não ultrapasse a tela */
+    }
+
+}
+
+@media screen and (max-width: 480px) {
+    body {
+        padding: 5px;
+    }
+    h1 {
+        font-size: 26px;
+    }
+    h2 {
+        font-size: 18px;
+    }
+    .container {
+        padding: 5px;
+    }
+    .descricao_superior {
+        gap: 10px;
+    }
+    .input-caixa {
+        font-size: 12px;
+        padding: 5px;
+    }
+    .atributos_arvore, .hab_arvore {
+        gap: 15px;
+    }
+    .vantagens_defeitos {
+        max-width: 100%; /* Preenche a largura do dispositivo */
+    }
+    .item input[type="text"] {
+        font-size: 14px;
+    }
+    .linhas_dis_item input[type="text"] {
+        font-size: 14px;
+    }
+    .esquerda {
+        max-width: 100%; /* Largura total no mobile */
+    }
 }
 
 .experiencia_total, .experiencia_gasta{
