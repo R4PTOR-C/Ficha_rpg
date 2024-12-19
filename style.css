@@ -249,10 +249,6 @@ Avaliando se à nescessidade de uma Criação de uma classe geral para todas as 
 
 
 
-
-
-
-
 /*------------------------------------------------------------------*/
 /*------------------------------------------------------------------*/
 /*------------personalização dos input------------------------------*/
@@ -372,4 +368,81 @@ input[type="checkbox"].nivel:checked + label {
     border: 1px solid #000;
     width: 409px;
     height: 300px;
+}
+
+
+/*------------------------------------------------------------*/
+/*------------------------------------------------------------*/
+/*----------Modificações dia 19-------------------------------*/
+/*------------------------------------------------------------*/
+/*------------------------------------------------------------*/
+/*------------------------------------------------------------*/
+.sangue_tit_item input[type="checkbox"] {
+    border: 1px solid #000;
+    border-radius: 50px;
+}
+
+.sangue_titulo h3{
+    color: #75021C;
+}
+
+.des_san_linha input[type="text"] {
+    width: 220px;
+    height: 100px;
+    font-size: 16px;
+    border: 1px solid #000;
+}
+
+
+.descricao_inferior{
+    display: flex;
+    justify-content: space-between;
+}
+
+.sangue_titulo{
+    display: flex;
+    justify-content: space-around;
+}
+
+.des_san_linha{
+    display: flex;
+}
+
+
+.experiencia{
+    padding: 15px 0;
+}
+
+.experiencia_total, .experiencia_gasta{
+    padding-top: 20px;
+    display: flex;
+}
+
+.experiencia_total, .experiencia_gasta h3{
+    color: #75021C;
+}
+
+.experiencia_total input[type="text"], .experiencia_gasta input[type="text"]{
+    border: none;
+    border-bottom: 2px dotted #000;
+    outline: none;
+
+}
+
+.experiencia_total input[type="text"]:focus {
+    border-bottom: 2px dotted #000;
+}
+
+.descricao_bio{
+    display: flex;
+    flex-direction: column;
+}
+
+.descricao_bio input[type="text"]{
+    height:50px;
+}
+
+.descricao_bio input[type="text"]::placeholder{
+    color: #000;
+
 }
