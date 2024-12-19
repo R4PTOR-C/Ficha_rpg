@@ -323,7 +323,14 @@ input[type="checkbox"].nivel:checked + label {
     color: #75021C;
 }
 
+input[type="checkbox"].quadrado + label {
+    border-radius: 0; /* Remove a borda arredondada */
+}
 
+.linhas_dis_item{
+    display: flex;
+    align-items: center;
+}
 
 
 /*---------------------------------------------------------------------*/
@@ -334,6 +341,9 @@ input[type="checkbox"].nivel:checked + label {
 /*----------pra ficar igual esses que fica vermelho pfv----------------*/
 /*---------------------------------------------------------------------*/
 
+.qualificacao{
+display: flex;
+}
 
 .vantagens_defeitos{
     display: flex;
@@ -341,19 +351,12 @@ input[type="checkbox"].nivel:checked + label {
     max-width: 412px;
 }
 
-
-
-
 .item {
     display:flex ;
     max-width: 396px;
     padding: 7px;
     gap: 5px;
     border: 1px solid #000;
-}
-
-.item input[type="checkbox"]{
-    border-radius: 50%; /* Torna redonda */
 }
 
 .item input[type="text"]{
@@ -370,74 +373,145 @@ input[type="checkbox"].nivel:checked + label {
 }
 .nota input[type="text"]{
     border: 1px solid #000;
-    width: 409px;
+    width: 100%;
     height: 300px;
 }
-=======
 
-/*responsivo*/
+.esquerda {
+    width: 100%; /* Largura padrão, ocupa todo o espaço disponível */
+    max-width: 409px; /* Limita a largura máxima */
+}
 
+/* Responsividade */
 @media screen and (max-width: 1200px) {
     .container {
-        max-width: 90%;
-        padding: 10px;
+        max-width: 95%; /* Mais flexível para telas intermediárias */
+        padding: 15px;
     }
     .atributos_arvore, .hab_arvore {
         flex-direction: column;
         align-items: center;
-        gap: 20px;
+        gap: 25px;
     }
     .descricao_superior {
         flex-direction: column;
+        gap: 15px;
     }
     .descricao_superior h3 {
-        font-size: 20px;
+        font-size: 22px;
+        text-align: center;
     }
     .input-caixa {
         max-width: 100%; /* Ajusta a largura para telas menores */
+        font-size: 14px; /* Texto menor */
+    }
+    .conteudo {
+        gap: 15px;
+    }
+    .linhas_dis {
+        flex-direction: column; /* Empilha os itens verticalmente */
+        gap: 15px; /* Espaçamento entre os itens */
+        align-items: flex-start; /* Alinha os itens à esquerda */
+    }
+    .linhas_dis_item {
+        width: 100%; /* Ocupa toda a largura disponível */
+    }
+    label {
+        margin-bottom: 5px; /* Espaçamento entre o label e os inputs */
     }
 }
+
 @media screen and (max-width: 768px) {
     .conteudo {
         flex-direction: column;
         gap: 20px;
     }
-    .atributos_arvore {
-        flex-direction: column;
-    }
-    .atributos_linha, .hab_arvore {
+    .atributos_arvore, .atributos_linha, .hab_arvore {
         flex-direction: column;
         gap: 20px;
     }
     h1 {
-        font-size: 35px;
+        font-size: 32px;
+        text-align: center;
     }
     h2 {
         font-size: 20px;
+        text-align: center;
     }
-    .input-caixa {
-        min-height: 100px;
-        font-size: 14px;
+    .descricao_superior h3 {
+        font-size: 18px;
     }
     label {
-        margin: 3px; /* Reduz o espaçamento em telas menores */
+        margin: 5px 0; /* Margem vertical ajustada */
     }
+    .qualificacao {
+        justify-content: center;
+    }
+    .vantagens_defeitos {
+        max-width: 100%; /* Ocupa toda a tela */
+    }
+    .item {
+        max-width: 90%; /* Ajusta largura */
+    }
+    .linhas_dis {
+        flex-direction: column; /* Empilha os itens verticalmente */
+        gap: 15px; /* Espaçamento entre os itens */
+        align-items: flex-start; /* Alinha os itens à esquerda */
+    }
+    .linhas_dis_item {
+        width: 100%; /* Ocupa toda a largura disponível */
+    }
+    label {
+        margin-bottom: 5px; /* Espaçamento entre o label e os inputs */
+    }
+    .input-caixa {
+        max-width: 100%; /* Ajusta a largura para telas menores */
+        font-size: 14px; /* Texto menor */
+    }
+    .detalhes_aprofundados{
+        padding: 10px;
+
+    }
+    .esquerda {
+        max-width: 100%; /* Largura total no mobile */
+    }
+
 }
+
 @media screen and (max-width: 480px) {
+    body {
+        padding: 5px;
+    }
     h1 {
-        font-size: 28px;
-        text-align: center;
+        font-size: 26px;
     }
     h2 {
         font-size: 18px;
-        text-align: center;
     }
     .container {
-        padding: 10px;
+        padding: 5px;
+    }
+    .descricao_superior {
+        gap: 10px;
     }
     .input-caixa {
         font-size: 12px;
         padding: 5px;
+    }
+    .atributos_arvore, .hab_arvore {
+        gap: 15px;
+    }
+    .vantagens_defeitos {
+        max-width: 100%; /* Preenche a largura do dispositivo */
+    }
+    .item input[type="text"] {
+        font-size: 14px;
+    }
+    .linhas_dis_item input[type="text"] {
+        font-size: 14px;
+    }
+    .esquerda {
+        max-width: 100%; /* Largura total no mobile */
     }
 }
 
