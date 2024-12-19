@@ -23,6 +23,10 @@ header {
     padding-bottom: 35px;
 }
 
+li{
+    list-style: none;
+}
+
 h1 {
     font-size: 45px;
 }
@@ -34,11 +38,28 @@ h2 {
 }
 
 
+input[type="text"] {
+    background: none;
+    color: black; /* Cor do texto padrão */
+}
 
+input[type="checkbox"] {
+    appearance: none; /* Remove o estilo padrão */
+    border: 1px solid #000; /* Borda visível */
+    width: 15px;
+    height: 15px;
+    cursor: pointer;
+    background-color: transparent;
+}
+
+input[type="checkbox"]:checked {
+    background-color: #4caf50; /* Fundo ao marcar */
+    border-color: #4caf50;
+}
 /*
 
 
-Avaliando se à nescessidade de uma Criação de uma classe geral para todas as label 
+Avaliando se à nescessidade de uma Criação de uma classe geral para todas as input
 
 
 */
@@ -47,7 +68,7 @@ Avaliando se à nescessidade de uma Criação de uma classe geral para todas as 
 
 .conteudo{
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
 
 }
 
@@ -57,9 +78,9 @@ Avaliando se à nescessidade de uma Criação de uma classe geral para todas as 
 }
 
 .conteu_item input{
-    background: none; 
-    border: none; 
-    outline: none; 
+    background: none;
+    border: none;
+    outline: none;
     font-size: 16px;
 
     transition: color 0.3s ease;
@@ -72,12 +93,12 @@ Avaliando se à nescessidade de uma Criação de uma classe geral para todas as 
 }
 
 .atributos_arvore {
-    
+
     display: flex;
     justify-content: space-between;
     padding-top: 30px;
     gap: 100px;
-    
+
 }
 
 .subtitulo{
@@ -133,8 +154,10 @@ Avaliando se à nescessidade de uma Criação de uma classe geral para todas as 
 
 .disciplinas{
     text-align: center;
+}
 
-    border: 1px solid red;
+.descricao_dis{
+    padding-top: 10px;
 }
 
 .logo {
@@ -158,6 +181,8 @@ Avaliando se à nescessidade de uma Criação de uma classe geral para todas as 
     position: relative; /* Necessário para usar pseudo-elementos */
     border: 1px solid #75021C; /* Linha interna */
     border-radius: 8px;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .container::before {
@@ -182,17 +207,51 @@ Avaliando se à nescessidade de uma Criação de uma classe geral para todas as 
 
 .descricao_superior {
     display: flex;
-    gap: 10px;
+    gap: 23px;
     justify-content: center;
+    padding-bottom: 50px;
 }
 
 .descricao_superior h3{
     color:#75021C;
+    font-weight: lighter;
 }
+
+.linhas_dis {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+.linhas_dis_item label{
+    font-weight: bold; /* Torna o texto do label em negrito */
+    color:#75021C
+}
+
 
 .principios_da_cronica, .pilares_e_conveccoes, .perdicao_do_cla{
     text-align: center;
 }
+
+
+
+
+.vantagens_defeitos{
+    text-align: center;
+}
+
+.vantagens_defeitos h3{
+    color: #75021C;
+}
+
+
+
+
+
+
+
+
+
 
 /*------------------------------------------------------------------*/
 /*------------------------------------------------------------------*/
@@ -252,3 +311,65 @@ input[type="checkbox"].nivel:checked + label {
     background-color: #ff0000; /* Cor da bolinha ao marcar */
 }
 
+.linhas_dis_item input[type="text"]{
+    border: none; /* Remove todas as bordas */
+    border-bottom: 1px solid #000; /* Adiciona uma linha inferior */
+    outline: none; /* Remove o contorno ao focar */
+    font-size: 17px;
+    transition: color 0.3s ease; /* Efeito suave na mudança de cor */
+}
+
+.linhas_dis_item input[type="text"]:focus {
+    color: #75021C;
+}
+
+
+
+
+/*---------------------------------------------------------------------*/
+/*---------------------------------------------------------------------*/
+/*----------aqui pra baixo vou só repetir uns css----------------------*/
+/*---------------------------------------------------------------------*/
+/*----------Depois-se-tiver-como-,-só-troca-a-classe-desses-checkbox---*/
+/*----------pra ficar igual esses que fica vermelho pfv----------------*/
+/*---------------------------------------------------------------------*/
+
+
+.vantagens_defeitos{
+    display: flex;
+    flex-direction: column;
+    max-width: 412px;
+}
+
+
+
+
+.item {
+    display:flex ;
+    max-width: 396px;
+    padding: 7px;
+    gap: 5px;
+    border: 1px solid #000;
+}
+
+.item input[type="checkbox"]{
+    border-radius: 50%; /* Torna redonda */
+}
+
+.item input[type="text"]{
+    border: none; /* Remove todas as bordas */
+    width: 300px;
+}
+.item input[type="text"]:focus{
+    outline: none; /* Remove o contorno quando o input está focado */
+    border: none;
+}
+
+.nota{
+    padding-top: 10px;
+}
+.nota input[type="text"]{
+    border: 1px solid #000;
+    width: 409px;
+    height: 300px;
+}
