@@ -406,6 +406,12 @@ input[type="checkbox"].quadrado + label {
     border: 1px solid #000;
     border-radius: 50px;
 }
+.sangue_tit_item {
+    display: flex; /* Torna o container flexível */
+    flex-wrap: nowrap; /* Impede a quebra de linha */
+}
+
+
 
 .sangue_titulo h3{
     color: #75021C;
@@ -509,6 +515,17 @@ input[type="checkbox"].quadrado + label {
     label {
         margin-bottom: 5px; /* Espaçamento entre o label e os inputs */
     }
+    .descricao_inferior {
+        flex-direction: column; /* Coloca os itens em coluna */
+        align-items: center; /* Centraliza os itens horizontalmente */
+        gap: 20px; /* Espaçamento entre os itens */
+    }
+
+    .esquerda,
+    .direita {
+        width: 100%; /* Cada item ocupa toda a largura */
+    }
+
 }
 
 @media screen and (max-width: 768px) {
@@ -581,6 +598,8 @@ input[type="checkbox"].quadrado + label {
         flex: 1 1 100%; /* Cada item ocupa 100% da largura */
         max-width: 100%; /* Garante que não ultrapasse a tela */
     }
+
+
 
 }
 
