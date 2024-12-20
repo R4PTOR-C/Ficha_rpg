@@ -48,11 +48,40 @@ document.addEventListener('DOMContentLoaded', () => {
             const pageWidth = 210; // Largura da página A4 em mm
             const pageHeight = 297; // Altura da página A4 em mm
             const backgroundColor = '#f9f3e9'; // Cor de fundo desejada
+            const borderColor = '#75021C'; // Cor das bordas
+            const borderWidth1 = 0.5; // Espessura da borda interna
+            const borderWidth2 = 0.5; // Espessura da borda externa
+            const borderOuterMargin = 5; // Margem externa para a borda externa
+            const borderInnerSpacing = 1; // Espaçamento entre bordas
+            const contentPadding = 10; // Espaçamento entre a borda interna e o conteúdo
 
             // Função para preencher o fundo do PDF
             const fillBackground = (pdf) => {
                 pdf.setFillColor(backgroundColor);
                 pdf.rect(0, 0, pageWidth, pageHeight, 'F'); // 'F' para preencher
+            };
+
+            // Função para desenhar as bordas duplas
+            const drawBorders = (pdf) => {
+                pdf.setDrawColor(borderColor);
+
+                // Borda externa
+                pdf.setLineWidth(borderWidth2);
+                pdf.rect(
+                    borderOuterMargin,
+                    borderOuterMargin,
+                    pageWidth - 2 * borderOuterMargin,
+                    pageHeight - 2 * borderOuterMargin
+                );
+
+                // Borda interna
+                pdf.setLineWidth(borderWidth1);
+                pdf.rect(
+                    borderOuterMargin + borderInnerSpacing,
+                    borderOuterMargin + borderInnerSpacing,
+                    pageWidth - 2 * (borderOuterMargin + borderInnerSpacing),
+                    pageHeight - 2 * (borderOuterMargin + borderInnerSpacing)
+                );
             };
 
             // Captura a primeira página
@@ -63,11 +92,20 @@ document.addEventListener('DOMContentLoaded', () => {
                 useCORS: true, // Garante que imagens externas sejam carregadas
             });
             const firstImgData = firstCanvas.toDataURL('image/png');
-            const firstImgHeight = (firstCanvas.height * pageWidth) / firstCanvas.width;
+            const imgWidth = pageWidth - 2 * (borderOuterMargin + borderInnerSpacing + contentPadding);
+            const imgHeight = (firstCanvas.height * imgWidth) / firstCanvas.width;
 
-            // Preenche o fundo e adiciona a primeira imagem
+            // Preenche o fundo, adiciona as bordas e a primeira imagem
             fillBackground(pdf);
-            pdf.addImage(firstImgData, 'PNG', 0, 0, pageWidth, firstImgHeight);
+            drawBorders(pdf);
+            pdf.addImage(
+                firstImgData,
+                'PNG',
+                borderOuterMargin + borderInnerSpacing + contentPadding,
+                borderOuterMargin + borderInnerSpacing + contentPadding,
+                imgWidth,
+                imgHeight
+            );
 
             // Captura a segunda página
             const secondPageElement = document.querySelector('.segunda-pagina');
@@ -77,16 +115,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 useCORS: true,
             });
             const secondImgData = secondCanvas.toDataURL('image/png');
-            const secondImgHeight = (secondCanvas.height * pageWidth) / secondCanvas.width;
+            const secondImgHeight = (secondCanvas.height * imgWidth) / secondCanvas.width;
 
             // Adiciona a segunda página
             pdf.addPage();
             fillBackground(pdf);
+            drawBorders(pdf);
 
             // Adiciona a logo antes do conteúdo
             const logoUrl = 'logo.png'; // Substitua pelo caminho da sua logo
-            const logoX = 10;
-            const logoY = 10;
+            const logoX = borderOuterMargin + borderInnerSpacing + contentPadding;
+            const logoY = borderOuterMargin + borderInnerSpacing + contentPadding;
             const logoWidth = 50;
             const logoHeight = 20;
 
@@ -97,16 +136,25 @@ document.addEventListener('DOMContentLoaded', () => {
                 pdf.addImage(logoImage, 'PNG', logoX, logoY, logoWidth, logoHeight);
 
                 // Adiciona o conteúdo da segunda página
-                pdf.addImage(secondImgData, 'PNG', 0, logoY + logoHeight + 10, pageWidth, secondImgHeight);
+                pdf.addImage(
+                    secondImgData,
+                    'PNG',
+                    borderOuterMargin + borderInnerSpacing + contentPadding,
+                    logoY + logoHeight + 10,
+                    imgWidth,
+                    secondImgHeight
+                );
 
                 // Salva o PDF
-                pdf.save('pagina.pdf');
+                pdf.save('Ficha.pdf');
             };
         });
     } else {
         console.error("Botão de download não encontrado!");
     }
 });
+
+
 
 
 
