@@ -1,36 +1,34 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Seleciona todos os checkboxes com a classe "nivel"
     document.querySelectorAll('.nivel').forEach((checkbox) => {
         checkbox.addEventListener('change', (event) => {
-            const current = event.target; // O checkbox atual que foi clicado
-            const parent = current.parentElement; // Elemento pai do grupo
-            const allCheckboxes = Array.from(parent.querySelectorAll('.nivel')); // Todos os checkboxes no mesmo grupo
-            const index = allCheckboxes.indexOf(current); // Índice do checkbox atual no grupo
+            const current = event.target;
+            const parent = current.parentElement;
+            const allCheckboxes = Array.from(parent.querySelectorAll('.nivel'));
+            const index = allCheckboxes.indexOf(current);
 
             if (current.checked) {
-                // Marca todas as anteriores, incluindo a atual
                 for (let i = 0; i <= index; i++) {
                     allCheckboxes[i].checked = true;
                 }
             } else {
-                // Desmarca todas as posteriores
                 for (let i = index + 1; i < allCheckboxes.length; i++) {
                     allCheckboxes[i].checked = false;
                 }
             }
 
-            // Atualiza as cores das bolinhas
             allCheckboxes.forEach((cb, i) => {
-                const label = cb.nextElementSibling; // Seleciona o label associado
+                const label = cb.nextElementSibling;
                 if (cb.checked) {
-                    // Define as cores com base no número de checkboxes no grupo
                     const colors = allCheckboxes.length === 5
-                        ? ["#000000", "#400000", "#800000", "#bf0000", "#ff0000"] // Paleta para 5 níveis
-                        : ["#000000", "#190000", "#330000", "#4c0000", "#660000", // Paleta para 10 níveis
+                        ? ["#000000", "#400000", "#800000", "#bf0000", "#ff0000"]
+                        : ["#000000", "#190000", "#330000", "#4c0000", "#660000",
                             "#7f0000", "#990000", "#b20000", "#cc0000", "#e50000", "#ff0000"];
-                    label.style.backgroundColor = colors[i] || "#ff0000"; // Aplica cor ao label
+                    const color = colors[i] || "#ff0000";
+                    label.style.backgroundColor = color; // Cor interna
+                    label.style.borderColor = color; // Cor da borda
                 } else {
-                    label.style.backgroundColor = ""; // Reseta a cor
+                    label.style.backgroundColor = ""; // Reseta a cor interna
+                    label.style.borderColor = ""; // Reseta a cor da borda
                 }
             });
         });
@@ -40,30 +38,77 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-
 document.addEventListener('DOMContentLoaded', () => {
     const downloadBtn = document.getElementById('download-pdf');
 
     if (downloadBtn) {
-        downloadBtn.addEventListener('click', () => {
-            const element = document.body;
+        downloadBtn.addEventListener('click', async () => {
+            const pdf = new jspdf.jsPDF('p', 'mm', 'a4');
 
-            html2canvas(element, { scale: 2 }).then(canvas => {
-                const imgData = canvas.toDataURL('image/png');
-                const pdf = new jspdf.jsPDF('p', 'mm', 'a4');
+            const pageWidth = 210; // Largura da página A4 em mm
+            const pageHeight = 297; // Altura da página A4 em mm
+            const backgroundColor = '#f9f3e9'; // Cor de fundo desejada
 
-                const pageWidth = 210;
-                const imgWidth = pageWidth;
-                const imgHeight = (canvas.height * pageWidth) / canvas.width;
+            // Função para preencher o fundo do PDF
+            const fillBackground = (pdf) => {
+                pdf.setFillColor(backgroundColor);
+                pdf.rect(0, 0, pageWidth, pageHeight, 'F'); // 'F' para preencher
+            };
 
-                pdf.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight);
-                pdf.save('pagina.pdf');
+            // Captura a primeira página
+            const firstPageElement = document.querySelector('.primeira-pagina');
+            const firstCanvas = await html2canvas(firstPageElement, {
+                scale: 3, // Aumenta a precisão para capturar bordas finas
+                backgroundColor: null, // Usa a cor de fundo do CSS
+                useCORS: true, // Garante que imagens externas sejam carregadas
             });
+            const firstImgData = firstCanvas.toDataURL('image/png');
+            const firstImgHeight = (firstCanvas.height * pageWidth) / firstCanvas.width;
+
+            // Preenche o fundo e adiciona a primeira imagem
+            fillBackground(pdf);
+            pdf.addImage(firstImgData, 'PNG', 0, 0, pageWidth, firstImgHeight);
+
+            // Captura a segunda página
+            const secondPageElement = document.querySelector('.segunda-pagina');
+            const secondCanvas = await html2canvas(secondPageElement, {
+                scale: 3, // Aumenta a precisão para capturar bordas finas
+                backgroundColor: null,
+                useCORS: true,
+            });
+            const secondImgData = secondCanvas.toDataURL('image/png');
+            const secondImgHeight = (secondCanvas.height * pageWidth) / secondCanvas.width;
+
+            // Adiciona a segunda página
+            pdf.addPage();
+            fillBackground(pdf);
+
+            // Adiciona a logo antes do conteúdo
+            const logoUrl = 'logo.png'; // Substitua pelo caminho da sua logo
+            const logoX = 10;
+            const logoY = 10;
+            const logoWidth = 50;
+            const logoHeight = 20;
+
+            const logoImage = new Image();
+            logoImage.src = logoUrl;
+
+            logoImage.onload = () => {
+                pdf.addImage(logoImage, 'PNG', logoX, logoY, logoWidth, logoHeight);
+
+                // Adiciona o conteúdo da segunda página
+                pdf.addImage(secondImgData, 'PNG', 0, logoY + logoHeight + 10, pageWidth, secondImgHeight);
+
+                // Salva o PDF
+                pdf.save('pagina.pdf');
+            };
         });
     } else {
         console.error("Botão de download não encontrado!");
     }
 });
+
+
 
 
 
